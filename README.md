@@ -25,7 +25,7 @@ Hepsi Bu kadar.
 Eklenen kategoriye ait görselelrin tutulduğu tablo.
 ![image](https://user-images.githubusercontent.com/26199757/147833729-a48e1a6d-2ca3-4824-ae9c-e682165ed654.png)
 
-Eklelen kategorilerin tutulduğu tablo.
+Eklenen kategorilerin tutulduğu tablo.
 ![image](https://user-images.githubusercontent.com/26199757/147833754-702b9044-333b-49e8-aee5-4b6d58e95c3e.png)
 
 Ve işlem başarılı tamamlandığında gelen bildiirm maili.
