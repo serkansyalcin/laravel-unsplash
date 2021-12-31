@@ -21,3 +21,6 @@ ADMIN_EMAIL="serkan.syalcin@hotmail.com"
 >> php artisan topic:get architecture
 
 Hepsi Bu kadar.
+
+
+![image](https://user-images.githubusercontent.com/26199757/147833729-a48e1a6d-2ca3-4824-ae9c-e682165ed654.png)
