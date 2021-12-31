@@ -40,37 +40,45 @@ class GetUnsplashTopicImages extends Command
      */
     public function handle()
     {
-
-        $topic = Http::get('https://api.unsplash.com/topics/' . $this->argument('topic_slug') . '?client_id=' . env('unsplash_client_id'))->json();
-        $response = Http::get('https://api.unsplash.com/topics/' . $this->argument('topic_slug') . '/photos?per_page=100&client_id=' . env('unsplash_client_id'))->json();
-        $this->info("Loading images for topic: " . $topic['title']);
-
-        $category = Category::firstOrCreate(['name' => $topic['title']]);
-        $this->output->progressStart(count($response));
-
-        DB::transaction(function () use ($response, $category) {
-            for ($i = 0; $i < count($response); $i++) {
-                $image = array_push($response[$i], ['uid' => $response[$i]['id']]);
-
-                $image = $category->images()->updateOrCreate([
-                    'uid' => $response[$i]['id'],
-                ], $response[$i]);
-
-                foreach ($response[$i]['urls'] as $key => $value) {
-                    $image->urls()->updateOrCreate([
-                        'type' => $key,
-                        'url' => $value,
-                    ], [
-                        'type' => $key,
-                        'url' => $value
-                    ]);
-                }
-
-                $this->output->progressAdvance();
+        try {
+            $topic = Http::get('https://api.unsplash.com/topics/' . $this->argument('topic_slug') . '?client_id=' . env('unsplash_client_id'))->json();
+            $response = Http::get('https://api.unsplash.com/topics/' . $this->argument('topic_slug') . '/photos?per_page=100&client_id=' . env('unsplash_client_id'))->json();
+            if(!isset($topic['title'])) {
+                $this->error('Topic not found');
+                return 1;
             }
-        });
 
-        $this->output->progressFinish();
-        $this->info("Finished successfully");
+            $this->info("Loading images for topic: " . $topic['title']);
+
+            $category = Category::firstOrCreate(['name' => $topic['title']]);
+            $this->output->progressStart(count($response));
+
+            DB::transaction(function () use ($response, $category) {
+                for ($i = 0; $i < count($response); $i++) {
+                    $image = array_push($response[$i], ['uid' => $response[$i]['id']]);
+
+                    $image = $category->images()->updateOrCreate([
+                        'uid' => $response[$i]['id'],
+                    ], $response[$i]);
+
+                    foreach ($response[$i]['urls'] as $key => $value) {
+                        $image->urls()->updateOrCreate([
+                            'type' => $key,
+                            'url' => $value,
+                        ], [
+                            'type' => $key,
+                            'url' => $value
+                        ]);
+                    }
+
+                    $this->output->progressAdvance();
+                }
+            });
+
+            $this->output->progressFinish();
+            $this->info("Finished successfully");
+        } catch (\Exception $e) {
+            $this->error("Error: " . $e->getMessage());
+        }
     }
 }
