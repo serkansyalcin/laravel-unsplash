@@ -28,3 +28,5 @@ Eklenen kategoriye ait görselelrin tutulduğu tablo.
 Eklelen kategorilerin tutulduğu tablo.
 ![image](https://user-images.githubusercontent.com/26199757/147833754-702b9044-333b-49e8-aee5-4b6d58e95c3e.png)
 
+Ve işlem başarılı tamamlandığında gelen bildiirm maili.
+![image](https://user-images.githubusercontent.com/26199757/147833799-a950afce-a648-4904-a8c8-acd846963bd7.png)
