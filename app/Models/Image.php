@@ -10,6 +10,7 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
+        'uid',
         'created_at',
         'updated_at',
         'promoted_at',
@@ -17,9 +18,11 @@ class Image extends Model
         'height',
         'description',
         'alt_description',
-        // 'urls',
-        // 'links',
         'category_id',
         'likes',
     ];
+
+    public function urls() {
+        return $this->hasMany(Url::class);
+    }
 }

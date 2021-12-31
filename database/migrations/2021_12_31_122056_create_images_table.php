@@ -15,13 +15,12 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('uid');
             $table->string('promoted_at')->nullable();
             $table->integer('width');
             $table->integer('height');
             $table->string('description')->nullable();
             $table->string('alt_description')->nullable();
-            // $table->json('urls');
-            // $table->json('links');
             $table->foreignId('category_id')->constrained();
             $table->integer('likes');
             $table->timestamps();
