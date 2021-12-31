@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\SuccessUnsplashMail;
 use App\Models\Category;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class GetUnsplashTopicImages extends Command
 {
@@ -73,6 +75,7 @@ class GetUnsplashTopicImages extends Command
 
                     $this->output->progressAdvance();
                 }
+                Mail::to(env('ADMIN_EMAIL'))->send(new SuccessUnsplashMail());
             });
 
             $this->output->progressFinish();
