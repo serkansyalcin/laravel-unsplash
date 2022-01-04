@@ -8,9 +8,9 @@ Laravel 8 > API ile Unsplash servisinden fotoğrafların çekilip, veritabanına
 
 İlk olarak veri tabanı bilgileri girilmeli.
 
-UNSPLASH_CLIENT_ID="Yi9aXBa-lrFQ4PgVJcsjRoSO1zkgd20-wuc1O12aK_Y"
+UNSPLASH_CLIENT_ID=""
 
-ADMIN_EMAIL="serkan.syalcin@hotmail.com"
+ADMIN_EMAIL=""
 
 3.Adım: php artisan migrate 
 
