@@ -1,4 +1,4 @@
-Laravel 8 > API ile Unsplash servisinden fotoğrafların çekilip, veritabanına kaydedilmesi uygulaması.
+Laravel 8 > API ile Unsplash servisinden fotoğrafların çekilip, veri tabanına kayıt edilmesi uygulaması.
 
 Çalıştırmak için;
 
@@ -7,6 +7,8 @@ Laravel 8 > API ile Unsplash servisinden fotoğrafların çekilip, veritabanına
 2.Adım: Env Dosyasının Düzenlenmesi
 
 İlk olarak veri tabanı bilgileri girilmeli.
+
+Daha sonra Unsplash API bilgilerinizi ve Mailgun bilgilerinizi girin.
 
 UNSPLASH_CLIENT_ID=""
 
@@ -18,7 +20,7 @@ ADMIN_EMAIL=""
 
 4.Adım istediğimiz kategorinin adını artisan komutu ile girip, kategoriye ait görsellerin veri tabanına kayıt edilmesini sağlamak;
 
->> php artisan topic:get architecture
+>> php artisan topic:get architecture 
 
 Hepsi Bu kadar.
 
